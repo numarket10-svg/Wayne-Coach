@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayne | Coach Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;         /* Negro profundo */
+            --blue-francia: #318CE7;    /* Azul Francia */
+            --blue-glow: #1a5b9e;       /* Azul oscuro para sombras */
+            --silver: #C0C0C0;          /* Plateado */
+            --text-light: #F5F5F5;      /* Blanco roto para legibilidad */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px; /* Ideal para formato móvil/Linktree */
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Header / Hero Section */
+        .hero {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--blue-francia);
+            box-shadow: 0 0 20px var(--blue-glow);
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h2 {
+            font-size: 1rem;
+            color: var(--silver);
+            font-weight: 400;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+
+        .ig-handle {
+            color: var(--blue-francia);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            background: linear-gradient(145deg, #121212, #0a0a0a);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #222;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--blue-francia);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Services Section */
+        .services {
+            text-align: center;
+        }
+
+        .services h3 {
+            font-size: 1.5rem;
+            color: var(--silver);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .service-card {
+            background-color: #111;
+            border-left: 4px solid var(--blue-francia);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 0 10px 10px 0;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateX(5px);
+            background-color: #1a1a1a;
+        }
+
+        .service-card h4 {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--silver);
+        }
+
+        /* Diseño del Carrusel */
+        .carousel-section {
+            text-align: center;
+            width: 100%;
+        }
+
+        .carousel-section h3 {
+            font-size: 1.5rem;
+            color: var(--silver);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid var(--blue-francia);
+            box-shadow: 0 0 15px var(--blue-glow);
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Botones de anterior/siguiente */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 12px 18px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: none;
+            transition: 0.3s;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: var(--blue-francia);
+        }
+
+        /* Call to Action Button */
+        .cta-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: var(--blue-francia);
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--blue-glow);
+        }
+
+        .cta-btn:hover {
+            background: #2575c4;
+            box-shadow: 0 6px 20px var(--blue-francia);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header class="hero">
+            <img src="file:///C:/Users/WAYNE/Downloads/WhatsApp%20Image%202026-06-03%20at%204.52.53%20PM.jpeg" alt="Wayne Profile" class="profile-img">
+            <h1>Coach Wayne</h1>
+            <h2>Transformación Física y Hábitos | <a href="https://instagram.com/wayyne.01" class="ig-handle">@wayyne.01</a></h2>
+        </header>
+
+        <section class="stats">
+            <div class="stat-item">
+                <span class="stat-number">5</span>
+                <span class="stat-label">Años de<br>Experiencia</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">+10</span>
+                <span class="stat-label">Clientes<br>Satisfechos</span>
+            </div>
+        </section>
+
+        <section class="services">
+            <h3>Mis Servicios</h3>
+            
+            <div class="service-card">
+                <h4>Entrenamiento Personalizado</h4>
+                <p>Rutinas adaptadas a tu nivel, objetivos y equipamiento. Maximiza tu hipertrofia y fuerza con un plan estructurado y eficiente.</p>
+            </div>
+            
+            <div class="service-card">
+                <h4>Planes de Nutrición</h4>
+                <p>Alimentación estratégica sin restricciones extremas. Planes diseñados para mutar tu físico, ya sea en fase de volumen o definición.</p>
+            </div>
+        </section>
+
+        <section class="carousel-section">
+            <h3>Cambios Reales</h3>
+            <div class="carousel">
+                <div class="slide active">
+                    <img src="file:///C:/Users/WAYNE/Downloads/WhatsApp%20Image%202026-06-03%20at%207.30.29%20PM.jpeg" alt="Transformación Alumno 1">
+                </div>
+                <div class="slide">
+                    <img src="file:///C:/Users/WAYNE/Downloads/WhatsApp%20Image%202026-06-03%20at%207.34.52%20PM.jpeg" alt="Transformación Alumno 2">
+                </div>
+                <div class="slide">
+                    <img src="file:///C:/Users/WAYNE/Downloads/WhatsApp%20Image%202026-05-27%20at%205.55.46%20PM.jpeg" alt="Transformación Alumno 3">
+                </div>
+                <div class="slide">
+                    <img src="file:///C:/Users/WAYNE/Downloads/WhatsApp%20Image%202026-06-03%20at%207.34.52%20PM%20(1).jpeg" alt="Transformación mi ejemplo">
+                </div>
+                
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+        </section>
+
+        <a href="https://ig.me/m/wayyne.01" class="cta-btn">Empieza tu Cambio Hoy</a>
+
+        <footer class="footer">
+            <p>© 2026 Wayne Coaching. Todos los derechos reservados.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function moveSlide(n) {
+            slides[slideIndex].classList.remove('active');
+            slideIndex += n;
+            
+            // Si llega al final, vuelve a la primera
+            if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            }
+            // Si retrocede en la primera, va a la última
+            if (slideIndex < 0) {
+                slideIndex = slides.length - 1;
+            }
+            
+            slides[slideIndex].classList.add('active');
+        }
+    </script>
+</body>
+</html>
